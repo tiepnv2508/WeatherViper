@@ -23,6 +23,7 @@ protocol WeatherListPresenterProtocol: class {
     var router: WeatherListRouterProtocol? { get set }
     
     func viewDidLoad()
+    func reloadWeathers()
     func showWeatherDetail(_ weatherModel: WeatherModel)
 }
 
@@ -31,6 +32,7 @@ protocol WeatherListInteractorInputProtocol: class {
     
     func retrieveCurrentWeather()
     func retrieveWeathers()
+    func reloadWeathers()
 }
 
 protocol WeatherListInteractorOutputProtocol: class {

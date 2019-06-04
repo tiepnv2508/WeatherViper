@@ -44,4 +44,10 @@ class WeatherListInteractor: WeatherListInteractorInputProtocol {
             }
         }
     }
+    
+    func reloadWeathers() {
+        weatherModels.removeAll()
+        retrieveWeathers()
+        retrieveCurrentWeather()
+    }
 }

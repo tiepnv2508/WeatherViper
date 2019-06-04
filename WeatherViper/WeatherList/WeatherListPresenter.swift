@@ -19,6 +19,10 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
         interactor?.retrieveCurrentWeather()
     }
     
+    func reloadWeathers() {
+        interactor?.reloadWeathers()
+    }
+    
     func showWeatherDetail(_ weatherModel: WeatherModel) {
         let builder = WeatherDetailBuilder(weatherModel: weatherModel)
         router?.transistTo(builder)

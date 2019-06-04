@@ -27,6 +27,7 @@ class WeatherListViewController: UITableViewController {
     private func setupView() {
         tableView.tableFooterView = UIView()
         
+        //Loading Indicator
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(activityIndicator)
@@ -36,6 +37,9 @@ class WeatherListViewController: UITableViewController {
             self.activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
         ])
+        
+        // Configure Refresh Control
+        self.refreshControl = UIRefreshControl()
     }
 }
 
@@ -58,6 +62,12 @@ extension WeatherListViewController {
         let weatherModel = weatherModels[indexPath.row]
         presenter?.showWeatherDetail(weatherModel)
     }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.refreshControl!.isRefreshing {
+            presenter?.reloadWeathers()
+        }
+    }
 }
 
 extension WeatherListViewController: WeatherListViewProtocol {
@@ -67,13 +77,18 @@ extension WeatherListViewController: WeatherListViewProtocol {
     }
     
     func stopLoading() {
-        self.activityIndicator.isHidden = true
-        self.activityIndicator.stopAnimating()
+        if self.activityIndicator.isAnimating {
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     func showWeatherList(_ weatherModels: [WeatherModel]) {
-        stopLoading()
         self.weatherModels = weatherModels
+        stopLoading()
+        if self.refreshControl!.isRefreshing {
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func showErrorMessage(_ message: String) {
