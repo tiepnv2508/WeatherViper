@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,6 +72,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="955.07246376811599" y="33.482142857142854"/>
+        </scene>
+        <!--Weather Detail View Controller-->
+        <scene sceneID="bmD-YY-GZn">
+            <objects>
+                <viewController storyboardIdentifier="WeatherDetailViewController" id="Jog-rV-RY2" customClass="WeatherDetailViewController" customModule="WeatherViper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6kR-PE-fwS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="58" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-RN-37p">
+                                <rect key="frame" x="134.5" y="354" width="145" height="198.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7T-60-G98">
+                                        <rect key="frame" x="9.5" y="0.0" width="135.5" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind degree:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krr-kP-Y89">
+                                        <rect key="frame" x="0.0" y="85.5" width="145" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCO-TX-h6V">
+                                        <rect key="frame" x="16.5" y="171" width="128.5" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dyV-RN-37p" firstAttribute="centerY" secondItem="qjO-JN-6Lu" secondAttribute="centerY" id="Q1f-iy-P0x"/>
+                            <constraint firstItem="dyV-RN-37p" firstAttribute="centerX" secondItem="qjO-JN-6Lu" secondAttribute="centerX" id="XWY-bg-Y8C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qjO-JN-6Lu"/>
+                    </view>
+                    <connections>
+                        <outlet property="cloudinessLabel" destination="ZCO-TX-h6V" id="0D1-P2-zyx"/>
+                        <outlet property="windDegreeLabel" destination="krr-kP-Y89" id="2Wk-nk-IC8"/>
+                        <outlet property="windSpeedLabel" destination="I7T-60-G98" id="VJO-BI-nvJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXh-x9-yYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1678.2608695652175" y="32.8125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="toK-4O-DSp">

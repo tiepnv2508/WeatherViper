@@ -11,8 +11,8 @@ import Foundation
 struct WeatherModel: Decodable {
     var weather: [Weather]
     var mainInfo: MainInfo
-    let clouds: Clouds
-    let wind: Wind
+    var clouds: Clouds
+    var wind: Wind
     let cityName: String
     
     private enum CodingKeys: String, CodingKey {
@@ -24,17 +24,19 @@ struct Weather: Decodable {
     let description: String
     let icon: String
     
-    lazy var iconUrl: String = "https://openweathermap.org/img/w/\(icon).png"
+    lazy var iconUrl:String = "https://openweathermap.org/img/w/\(icon).png"
 }
 
 struct MainInfo: Decodable {
     let temp: Double
     
-    lazy var tempText: String = "\(Int(round(temp)))°"
+    lazy var tempText:String = "\(Int(round(temp)))°"
 }
 
 struct Clouds: Decodable {
     let cloudiness: Double
+    
+    lazy var cloudinessText:String = "Cloudiness: \(Int(round(cloudiness)))%"
     
     private enum CodingKeys: String, CodingKey {
         case cloudiness = "all"
@@ -44,6 +46,9 @@ struct Clouds: Decodable {
 struct Wind: Decodable {
     let speed: Double
     let degree: Double
+    
+    lazy var speedText:String = "Wind speed: \(Int(round(speed)))mps"
+    lazy var degreeText:String = "Wind degree: \(Int(round(degree)))°"
     
     private enum CodingKeys: String, CodingKey {
         case speed, degree = "deg"

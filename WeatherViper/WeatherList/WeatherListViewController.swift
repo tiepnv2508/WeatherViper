@@ -18,11 +18,8 @@ class WeatherListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        presenter?.viewWillAppear()
     }
     
     private func setupView() {

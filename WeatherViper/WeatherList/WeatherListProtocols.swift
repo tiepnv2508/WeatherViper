@@ -20,7 +20,7 @@ protocol WeatherListPresenterProtocol: class {
     var interactor: WeatherListInteractorInputProtocol? { get set }
     var router: WeatherListRouterProtocol? { get set }
     
-    func viewWillAppear()
+    func viewDidLoad()
     func showWeatherDetail(_ weatherModel: WeatherModel)
 }
 

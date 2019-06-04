@@ -13,14 +13,14 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
     var interactor: WeatherListInteractorInputProtocol?
     var router: WeatherListRouterProtocol?
     
-    func viewWillAppear() {
+    func viewDidLoad() {
         interactor?.retrieveWeathers()
         interactor?.retrieveCurrentWeather()
     }
     
     func showWeatherDetail(_ weatherModel: WeatherModel) {
-        //let builder = WeatherDetailBuilder()
-        //router?.transistTo(builder)
+        let builder = WeatherDetailBuilder(weatherModel: weatherModel)
+        router?.transistTo(builder)
     }
 }
 
