@@ -27,10 +27,12 @@ protocol WeatherListPresenterProtocol: class {
 protocol WeatherListInteractorInputProtocol: class {
     var presenter: WeatherListInteractorOutputProtocol? { get set }
     
+    func retrieveCurrentWeather()
     func retrieveWeathers()
 }
 
 protocol WeatherListInteractorOutputProtocol: class {
+    func didRetrieveCurrentWeather(_ weatherModels: [WeatherModel])
     func didRetrieveWeathers(_ weatherModels: [WeatherModel])
     func onError(message: String)
 }

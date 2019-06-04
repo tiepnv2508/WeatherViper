@@ -15,6 +15,7 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
     
     func viewWillAppear() {
         interactor?.retrieveWeathers()
+        interactor?.retrieveCurrentWeather()
     }
     
     func showWeatherDetail(_ weatherModel: WeatherModel) {
@@ -24,6 +25,10 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
 }
 
 extension WeatherListPresenter: WeatherListInteractorOutputProtocol {
+    func didRetrieveCurrentWeather(_ weatherModels: [WeatherModel]) {
+        view?.showWeatherList(weatherModels)
+    }
+    
     func didRetrieveWeathers(_ weatherModels: [WeatherModel]) {
         view?.showWeatherList(weatherModels)
     }

@@ -24,7 +24,7 @@ struct Weather: Decodable {
     let description: String
     let icon: String
     
-    lazy var iconUrl: String = "http://openweathermap.org/img/w/\(icon).png"
+    lazy var iconUrl: String = "https://openweathermap.org/img/w/\(icon).png"
 }
 
 struct MainInfo: Decodable {

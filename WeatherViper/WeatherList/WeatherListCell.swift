@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class WeatherListCell: UITableViewCell {
     @IBOutlet weak var cityLabel: UILabel!
@@ -27,7 +28,7 @@ class WeatherListCell: UITableViewCell {
         guard var model = weatherModel else { return }
         cityLabel.text = model.cityName
         tempLabel.text = model.mainInfo.tempText
-        let iconUrl = model.weather[0].iconUrl
-        weatherIcon.image = UIImage(named: iconUrl)
+        let iconUrl = URL(string: model.weather[0].iconUrl)
+        weatherIcon.sd_setImage(with: iconUrl, completed: nil)
     }
 }
