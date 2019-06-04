@@ -29,7 +29,10 @@ class WeatherListInteractor: WeatherListInteractorInputProtocol {
     
     func retrieveCurrentWeather() {
         locationService.getCurrentCoordinate { [weak self](result) in
-            self?.weatherService.fetchWeather(latitude: result.latitude, longitude: result.longitude, unit: .imperial) { [weak self](result) in
+            let lat = result.latitude
+            let lon = result.longitude
+            if lat.isEmpty || lon.isEmpty { return }
+            self?.weatherService.fetchWeather(latitude: lat, longitude: lon, unit: .imperial) { [weak self](result) in
                 guard let weakSelf = self else { return }
                 switch result {
                 case .success(let currentWeather):

@@ -28,9 +28,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     private func getCurrentCoordinate() -> Coordinate {
-        let coord = locManager.location?.coordinate
-        let latitude = String(coord!.latitude)
-        let longitude = String(coord!.longitude)
+        guard let coord = locManager.location?.coordinate else {
+            return ("","")
+        }
+        let latitude = String(coord.latitude)
+        let longitude = String(coord.longitude)
         let result = (latitude, longitude)
         return result
     }
