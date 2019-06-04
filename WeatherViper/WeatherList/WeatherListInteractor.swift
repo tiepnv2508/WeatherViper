@@ -15,6 +15,7 @@ class WeatherListInteractor: WeatherListInteractorInputProtocol {
     var weatherModels: [WeatherModel] = []
     
     func retrieveWeathers() {
+        // Get weather of London (2643743) and Tokyo (1850147)
         weatherService.fetchWeathers(cityIds: [2643743, 1850147], unit: .imperial) { [weak self](result) in
             guard let weakSelf = self else { return }
             switch result {
