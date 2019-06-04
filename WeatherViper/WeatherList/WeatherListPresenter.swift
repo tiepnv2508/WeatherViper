@@ -14,6 +14,7 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
     var router: WeatherListRouterProtocol?
     
     func viewDidLoad() {
+        view?.displayLoading()
         interactor?.retrieveWeathers()
         interactor?.retrieveCurrentWeather()
     }

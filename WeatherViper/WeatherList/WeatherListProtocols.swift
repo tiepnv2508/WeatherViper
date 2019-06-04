@@ -11,6 +11,8 @@ import Foundation
 protocol WeatherListViewProtocol: class {
     var presenter: WeatherListPresenterProtocol? { get set }
     
+    func displayLoading()
+    func stopLoading()
     func showWeatherList(_ weatherModels: [WeatherModel])
     func showErrorMessage(_ message: String)
 }

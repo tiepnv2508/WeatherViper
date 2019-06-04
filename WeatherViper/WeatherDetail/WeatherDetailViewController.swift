@@ -24,6 +24,7 @@ class WeatherDetailViewController: UIViewController {
 extension WeatherDetailViewController: WeatherDetailViewProtocol {
     func showWeather(_ weatherModel: WeatherModel) {
         var weather = weatherModel
+        self.title = weather.cityName
         windSpeedLabel.text = weather.wind.speedText
         windDegreeLabel.text = weather.wind.degreeText
         cloudinessLabel.text = weather.clouds.cloudinessText
