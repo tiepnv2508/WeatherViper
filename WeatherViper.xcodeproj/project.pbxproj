@@ -17,6 +17,13 @@
 		22CADB8D22A51464005F7918 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADB8C22A51464005F7918 /* WeatherService.swift */; };
 		22CADB8F22A515F2005F7918 /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADB8E22A515F2005F7918 /* APIServiceError.swift */; };
 		22CADB9222A51A63005F7918 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADB9122A51A63005F7918 /* Weather.swift */; };
+		22CADB9C22A5D218005F7918 /* WeatherListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADB9B22A5D218005F7918 /* WeatherListProtocols.swift */; };
+		22CADB9E22A5D22F005F7918 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADB9D22A5D22F005F7918 /* WeatherListViewController.swift */; };
+		22CADBA022A5D243005F7918 /* WeatherListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADB9F22A5D243005F7918 /* WeatherListPresenter.swift */; };
+		22CADBA222A5DBC3005F7918 /* WeatherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADBA122A5DBC3005F7918 /* WeatherListInteractor.swift */; };
+		22CADBA422A5DBD6005F7918 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADBA322A5DBD6005F7918 /* WeatherListRouter.swift */; };
+		22CADBA622A5DBE0005F7918 /* WeatherListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADBA522A5DBE0005F7918 /* WeatherListBuilder.swift */; };
+		22CADBA822A5E69D005F7918 /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CADBA722A5E69D005F7918 /* WeatherListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +39,13 @@
 		22CADB8C22A51464005F7918 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		22CADB8E22A515F2005F7918 /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
 		22CADB9122A51A63005F7918 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		22CADB9B22A5D218005F7918 /* WeatherListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListProtocols.swift; sourceTree = "<group>"; };
+		22CADB9D22A5D22F005F7918 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
+		22CADB9F22A5D243005F7918 /* WeatherListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListPresenter.swift; sourceTree = "<group>"; };
+		22CADBA122A5DBC3005F7918 /* WeatherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListInteractor.swift; sourceTree = "<group>"; };
+		22CADBA322A5DBD6005F7918 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
+		22CADBA522A5DBE0005F7918 /* WeatherListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListBuilder.swift; sourceTree = "<group>"; };
+		22CADBA722A5E69D005F7918 /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +121,13 @@
 		22CADB8022A512F2005F7918 /* WeatherList */ = {
 			isa = PBXGroup;
 			children = (
+				22CADB9B22A5D218005F7918 /* WeatherListProtocols.swift */,
+				22CADB9D22A5D22F005F7918 /* WeatherListViewController.swift */,
+				22CADB9F22A5D243005F7918 /* WeatherListPresenter.swift */,
+				22CADBA122A5DBC3005F7918 /* WeatherListInteractor.swift */,
+				22CADBA322A5DBD6005F7918 /* WeatherListRouter.swift */,
+				22CADBA522A5DBE0005F7918 /* WeatherListBuilder.swift */,
+				22CADBA722A5E69D005F7918 /* WeatherListCell.swift */,
 			);
 			path = WeatherList;
 			sourceTree = "<group>";
@@ -230,13 +251,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22CADBA622A5DBE0005F7918 /* WeatherListBuilder.swift in Sources */,
 				22CADB8D22A51464005F7918 /* WeatherService.swift in Sources */,
 				22CADB8F22A515F2005F7918 /* APIServiceError.swift in Sources */,
 				22CADB8B22A513F2005F7918 /* URLSession+Extension.swift in Sources */,
+				22CADBA022A5D243005F7918 /* WeatherListPresenter.swift in Sources */,
+				22CADB9E22A5D22F005F7918 /* WeatherListViewController.swift in Sources */,
+				22CADBA822A5E69D005F7918 /* WeatherListCell.swift in Sources */,
 				22CADB8322A51331005F7918 /* BaseBuilder.swift in Sources */,
 				22CADB8722A5136A005F7918 /* BaseRouter.swift in Sources */,
+				22CADBA222A5DBC3005F7918 /* WeatherListInteractor.swift in Sources */,
 				22CADB6C22A51248005F7918 /* AppDelegate.swift in Sources */,
+				22CADB9C22A5D218005F7918 /* WeatherListProtocols.swift in Sources */,
 				22CADB9222A51A63005F7918 /* Weather.swift in Sources */,
+				22CADBA422A5DBD6005F7918 /* WeatherListRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

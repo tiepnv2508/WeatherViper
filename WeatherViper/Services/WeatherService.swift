@@ -8,22 +8,23 @@
 
 import Foundation
 
-enum Endpoint: String, CustomStringConvertible, CaseIterable {
+enum Endpoint: String{
     case weather
-    
-    var description: String {
-        return "\(self.rawValue)"
-    }
+    case group
 }
 
 enum Params: String {
     case latitude = "lat"
     case longitude = "lon"
     case query = "q"
-    
-    var description: String {
-        return "\(self.rawValue)"
-    }
+    case id
+    case units
+    case appid
+}
+
+enum Units: String {
+    case metric
+    case imperial
 }
 
 class WeatherService {
@@ -45,7 +46,7 @@ class WeatherService {
             return
         }
         
-        let queryItems = [URLQueryItem(name: "appid", value: appId)] + params
+        let queryItems = [URLQueryItem(name: Params.appid.rawValue, value: appId)] + params
         
         urlComponents.queryItems = queryItems
         
@@ -76,18 +77,45 @@ class WeatherService {
             }
         }.resume()
     }
-    
-    public func fetchWeather(from endpoint: Endpoint, latitude: String, longitude: String, result: @escaping (Result<WeatherResponseBody, APIServiceError>) -> Void) {
-        let weatherURL = baseURL.appendingPathComponent(endpoint.rawValue)
+
+    //****************************************************
+    //* Get weather data by latitude and longitude
+    //* Params: latitude, longitude, unit
+    //* Return values: Weather
+    //****************************************************
+    public func fetchWeather(latitude: String, longitude: String, unit: Units, result: @escaping (Result<WeatherModel, APIServiceError>) -> Void) {
+        let weatherURL = baseURL.appendingPathComponent(Endpoint.weather.rawValue)
         let params = [URLQueryItem(name: Params.latitude.rawValue, value: latitude),
-                      URLQueryItem(name: Params.longitude.rawValue, value: longitude)]
+                      URLQueryItem(name: Params.longitude.rawValue, value: longitude),
+                      URLQueryItem(name: Params.units.rawValue, value: unit.rawValue)]
         fetchResources(url: weatherURL, params: params, completion: result)
     }
     
-    public func fetchWeather(from endpoint: Endpoint, city: String, countryCode: String, result: @escaping (Result<WeatherResponseBody, APIServiceError>) -> Void) {
-        let weatherURL = baseURL.appendingPathComponent(endpoint.rawValue)
+    //****************************************************
+    //* Get weather data by city name and county code
+    //* Params: city, country code, unit
+    //* Return values: Weather
+    //****************************************************
+    public func fetchWeather(city: String, countryCode: String, unit: Units, result: @escaping (Result<WeatherModel, APIServiceError>) -> Void) {
+        let weatherURL = baseURL.appendingPathComponent(Endpoint.weather.rawValue)
         let query = "\(city),\(countryCode)"
-        let params = [URLQueryItem(name: Params.query.rawValue, value: query)]
+        let params = [URLQueryItem(name: Params.query.rawValue, value: query),
+                      URLQueryItem(name: Params.units.rawValue, value: unit.rawValue)]
+        fetchResources(url: weatherURL, params: params, completion: result)
+    }
+    
+    //****************************************************
+    //* Get weather data list by a group of city Ids
+    //* Params: cityIds, unit
+    //* Return values: Weather
+    //****************************************************
+    public func fetchWeathers(cityIds: [Int], unit: Units, result: @escaping (Result<ListWeatherResponseBody, APIServiceError>) -> Void) {
+        let weatherURL = baseURL.appendingPathComponent(Endpoint.group.rawValue)
+        let query = cityIds.reduce("") {
+            String($0).isEmpty ? String($1) :  String($0) + "," + String($1)
+        }
+        let params = [URLQueryItem(name: Params.id.rawValue, value: query),
+                      URLQueryItem(name: Params.units.rawValue, value: unit.rawValue)]
         fetchResources(url: weatherURL, params: params, completion: result)
     }
 }

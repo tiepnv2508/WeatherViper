@@ -8,13 +8,29 @@
 
 import Foundation
 
+struct WeatherModel: Decodable {
+    var weather: [Weather]
+    var mainInfo: MainInfo
+    let clouds: Clouds
+    let wind: Wind
+    let cityName: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case weather, mainInfo = "main", clouds, wind, cityName = "name"
+    }
+}
+
 struct Weather: Decodable {
     let description: String
     let icon: String
+    
+    lazy var iconUrl: String = "http://openweathermap.org/img/w/\(icon).png"
 }
 
 struct MainInfo: Decodable {
     let temp: Double
+    
+    lazy var tempText: String = "\(Int(round(temp)))°"
 }
 
 struct Clouds: Decodable {
@@ -34,13 +50,6 @@ struct Wind: Decodable {
     }
 }
 
-struct WeatherResponseBody: Decodable {
-    let weather: [Weather]
-    let mainInfo: MainInfo
-    let clouds: Clouds
-    let wind: Wind
-    
-    private enum CodingKeys: String, CodingKey {
-        case weather, mainInfo = "main", clouds, wind
-    }
+struct ListWeatherResponseBody: Decodable {
+    let list: [WeatherModel]
 }
